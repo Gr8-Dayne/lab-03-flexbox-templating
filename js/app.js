@@ -1,6 +1,6 @@
 'use strict'
 
-const allImages =[];
+let allImages =[];
 const myTemplate = Handlebars.compile($('#image-template').html());
 
 function HornImage(obj) {
@@ -50,6 +50,7 @@ HornImage.prototype.renderKeywords = function() {
 }
 
 function readJsonData(page) {
+  allImages = [];
   $.get(`./data/page-${page}.json`, 'json')
     .then(data => {
       data.forEach(hornImgObj => {
@@ -68,10 +69,10 @@ function filterHornImg() {
   $('select').on('change', function() {
     let selectedKeyword = $(this).val();
     if(selectedKeyword !== 'default') {
-      $('section').hide();
-      $(`#horns[id = "${selectedKeyword}"]`).show();
+      $('div').hide();
+      $(`div.${selectedKeyword}`).show();
     } else {
-      $('section').show();
+      $('div').show();
     }
   });
 }
