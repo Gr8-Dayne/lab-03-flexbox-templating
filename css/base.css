@@ -9,3 +9,9 @@ body, html {
   padding:0;
   width: 100%;
 }
+
+header {
+  display: flex;
+  text-align: center;
+  height: 50px;
+}
